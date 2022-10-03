@@ -1,0 +1,7 @@
+{
+  "name": "student-card",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
