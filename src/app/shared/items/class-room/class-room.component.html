@@ -1,0 +1,16 @@
+<div class="w-full flex justify-between border border-blue-900 p-4 my-4 rounded">
+  <div (click)="onDisplayStudents()">
+    <h3 class="text-blue-900 text-lg">{{ data.level }} {{ data.serie }} <span *ngIf="data.num">{{ data.num }}</span></h3>
+  </div>
+  <div class="flex gap-4">
+    <button (click)="onDisplayStudents()" class="bg-cyan-700 text-white text-md aspect-square px-2" >
+      <ion-icon  name="people"></ion-icon>
+    </button>
+    <button (click)="onEdit()" class="bg-yellow-700 text-white text-md aspect-square px-2">
+      <ion-icon  name="create"></ion-icon>
+    </button>
+    <button (click)="onDelete()" class="bg-red-700 text-white text-md aspect-square px-2">
+      <ion-icon  name="trash"></ion-icon>
+    </button>
+  </div>
+</div>

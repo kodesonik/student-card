@@ -1,0 +1,32 @@
+<app-modal-header [title]="'Impression'" [subtitle]="cards?.length + 'cartes'"></app-modal-header>
+<ion-content scrollY="false">
+  <div class="w-full bg-white flex justify-center overflow-auto print:overflow-hidden">
+    <div class="print-page" >
+      <div class="grid grid-cols-2">
+        <app-card class="border border-black" *ngFor="let card of cards" [data]="card" ></app-card>
+        <app-card class="border border-black" *ngFor="let card of cards" [data]="card" ></app-card>
+        <app-card class="border border-black" *ngFor="let card of cards" [data]="card" ></app-card>
+        <app-card class="border border-black" *ngFor="let card of cards" [data]="card" ></app-card>
+        <app-card class="border border-black" *ngFor="let card of cards" [data]="card" ></app-card>
+        <app-card class="border border-black" *ngFor="let card of cards" [data]="card" ></app-card>
+        <app-card class="border border-black" *ngFor="let card of cards" [data]="card" ></app-card>
+        <app-card class="border border-black" *ngFor="let card of cards" [data]="card" ></app-card>
+        <app-card class="border border-black" *ngFor="let card of cards" [data]="card" ></app-card>
+        <app-card class="border border-black" *ngFor="let card of cards" [data]="card" ></app-card>
+        <app-card class="border border-black" *ngFor="let card of cards" [data]="card" ></app-card>
+        <app-card class="border border-black" *ngFor="let card of cards" [data]="card" ></app-card>
+        <app-card class="border border-black" *ngFor="let card of cards" [data]="card" ></app-card>
+        <app-card class="border border-black" *ngFor="let card of cards" [data]="card" ></app-card>
+        <app-card class="border border-black" *ngFor="let card of cards" [data]="card" ></app-card>
+        <app-card class="border border-black" *ngFor="let card of cards" [data]="card" ></app-card>
+        <app-card class="border border-black" *ngFor="let card of cards" [data]="card" ></app-card>
+        <app-card class="border border-black" *ngFor="let card of cards" [data]="card" ></app-card>
+      </div>
+    </div>
+  </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="print:hidden">
+    <ion-fab-button (click)="onPrint()">
+      <ion-icon name="print"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

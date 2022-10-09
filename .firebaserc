@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "gestion-carte-scolaire"
+  },
+  "targets": {
+    "gestion-carte-scolaire": {
+      "hosting": {
+        "app": [
+          "gestion-carte-scolaire"
+        ]
+      }
+    }
+  }
+}

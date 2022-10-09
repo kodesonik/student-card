@@ -1,0 +1,24 @@
+<div class="w-full flex justify-between items-center border border-blue-900 shadow-sm p-4 my-4 rounded">
+
+  <div class="flex gap-2 items-center" >
+      <input id="remember" type="checkbox" [(ngModel)]="data.isChecked"
+      class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+      #checkbox required>
+    <img (click)="checkbox.click()" [src]="data.avatar || 'img/assets/avatar.png'" class="h-12 w-12 object-cover rounded-full" alt="">
+    <div (click)="checkbox.click()">
+      <h3 class="text-blue-900 text-lg">{{ data.lastName }} {{ data.firstName }}</h3>
+      <p class="text-md text-gray-500">{{ data.birthDate | date: "dd-MM-YYYY" }}</p>
+    </div>
+  </div>
+  <div class="flex h-full items-center gap-4">
+    <button (click)="onDisplayInfos()" class="h-fit w-fit bg-cyan-700 text-white text-md aspect-square px-2">
+      <ion-icon name="information-circle"></ion-icon>
+    </button>
+    <button (click)="onEdit()" class="h-fit w-fit bg-yellow-700 text-wite text-md aspect-square px-2">
+      <ion-icon name="create"></ion-icon>
+    </button>
+    <button (click)="onDelete()" class="h-fit w-fit bg-red-700 text-white text-md aspect-square px-2">
+      <ion-icon name="trash"></ion-icon>
+    </button>
+  </div>
+</div>

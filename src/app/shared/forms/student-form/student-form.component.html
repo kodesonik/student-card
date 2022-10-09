@@ -1,0 +1,78 @@
+<ion-header>
+  <h1 class="text-lg text-center text-blue-900">Ajouter un eleve</h1>
+
+</ion-header>
+<ion-content>
+  <div class="w-full h-full flex justify-center">
+    <div class="w-full max-w-lg h-full p-4">
+
+      <form>
+        <div class="mb-6 flex justify-center">
+          <img class="h-40 w-40 object-cover rounded-full" (click)="onTakePhoto()"
+            [src]="data.avatar || 'assets/img/logo.png' " alt="Current profile photo" />
+        </div>
+        <div class="grid gap-6 mb-6 2xl:grid-cols-2">
+          <div>
+            <label for="id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Matricule</label>
+            <input type="text" id="id"
+              class="bg-gray-50 border border-gray-300 uppercase text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              name="id" [(ngModel)]="data.id" placeholder="123" required>
+          </div>
+          <div>
+            <label for="first-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Nom</label>
+            <input type="text" id="first-name"
+              class="bg-gray-50 border border-gray-300 uppercase text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              name="firstName" [(ngModel)]="data.firstName" placeholder="AMA" required>
+          </div>
+          <div>
+            <label for="last-name"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Prenoms</label>
+            <input type="text" id="last-name"
+              class="bg-gray-50 border border-gray-300 capitalize text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              name="lastName" [(ngModel)]="data.lastName" placeholder="Kwatcha" required>
+          </div>
+          <div>
+            <label for="nationality"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Nationalite</label>
+            <input type="text" id="nationality"
+              class="bg-gray-50 border border-gray-300 capitalize text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              name="nationality" [(ngModel)]="data.nationality" placeholder="Togolaise" required>
+          </div>
+          <div>
+            <label for="phone1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Contact
+              1</label>
+            <input type="tel" id="phone1"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              name="phoneNumber" [(ngModel)]="data.phoneNumber" placeholder="(+228) 90 00 00 00"
+              pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
+          </div>
+          <div>
+            <label for="sex" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Sexe</label>
+            <select name="" id="sex"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              name="managerSex" [(ngModel)]="data.sex" placeholder="Feminin" required>
+              <option [value]="SEX.M">Masculin</option>
+              <option [value]="SEX.F">Feminin</option>
+            </select>
+          </div>
+          <div>
+            <label for="birth-date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Date de naissance</label>
+            <input type="date" id="birth-date"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              name="birthDate" [(ngModel)]="data.birthDate" placeholder="25/12/1990" required>
+          </div>
+          <div>
+            <label for="birth-place" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Lieu de naissance</label>
+            <input type="text" id="birth-place"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              name="birthPlace" [(ngModel)]="data.birthPlace" placeholder="Dapaong, Togo" required>
+          </div>
+
+        </div>
+       
+        <button (click)="onValidate()"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Ajouter</button>
+      </form>
+    </div>
+  </div>
+</ion-content>

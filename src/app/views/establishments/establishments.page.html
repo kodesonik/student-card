@@ -1,0 +1,23 @@
+
+<app-header [title]="'Liste des établissements'" [noReturn]="true"  ></app-header>
+<ion-content>
+  <div class="w-full h-full flex justify-center">
+    <div class="w-full max-w-xl h-full p-4">
+
+      <div class="mt-5 grid grid-cols-1 lg:grid-cols-2  gap-4" *ngIf="establishments.length > 0; else noData">
+        <app-establishment *ngFor="let establishment of establishments" [data]="establishment"></app-establishment>
+      </div>
+      <ng-template #noData>
+        <div class="h-full w-full flex justify-center items-center" >
+          <p class="text-md text-gray-500">Pas de donnees!</p>
+        </div>
+      </ng-template>
+    
+    </div>
+  </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="onAdd()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

@@ -1,0 +1,33 @@
+<ion-content>
+  <image-cropper
+    #cropper
+    [imageURL]="myImage"
+    [maintainAspectRatio]="true"
+    [aspectRatio]="1 / 1"
+    format="png"
+    [hideResizeSquares]="isMobile"
+    [transform]="transform"
+    [autoCrop]="false"
+    [roundCropper]=""true
+    (imageCropped)="imageCropped($event)"
+    (loadImageFailed)="loadImageFailed()"
+    (imageLoaded)="imageLoaded()"
+  ></image-cropper>
+
+<ion-row *ngIf="myImage">
+  <ion-col size="3" class="ion-text-center">
+    <ion-button fill="clear" (click)="rotate()">
+      <ion-icon name="refresh" slot="start"></ion-icon> Rotate
+    </ion-button>
+  </ion-col>
+  <ion-col size="3" class="ion-text-center">
+    <ion-button fill="clear" (click)="flipHorizontal()"> Flip X </ion-button>
+  </ion-col>
+  <ion-col size="3" class="ion-text-center">
+    <ion-button fill="clear" (click)="flipVertical()"> Flip Y </ion-button>
+  </ion-col>
+  <ion-col size="3" class="ion-text-center">
+    <ion-button fill="clear"  color="success" (click)="cropImage()"> Valider </ion-button>
+  </ion-col>
+</ion-row>
+</ion-content>

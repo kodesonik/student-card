@@ -1,0 +1,32 @@
+<div class="rounded-lg shadow-lg bg-white w-full">
+  <div class="flex items-center" (click)="displayYears()">
+
+    <div>
+      <img class="w-20 " [src]="data.logo || 'assets/img/logo.png'" alt="" />
+    </div>
+
+    <div class="p-2">
+      <h5 class="text-gray-900 text-md font-medium mb-2">{{ data.name }}</h5>
+      <p class="text-gray-700 text-xs mb-4">
+        B.P. {{ data.poBOX }}, {{ data.address }} <br>
+        {{ data.phoneNumber}} <span *ngIf="data.phoneNumber2">/ {{ data.phoneNumber2 }}</span>
+      </p>
+    </div>
+  </div>
+  <hr>
+  <div class="p-2 flex justify-between gap-2">
+    <button type="button" (click)="onDisplay()"
+      class=" inline-block px-2 py-2 border border-blue-600 text-blue-600 font-medium text-md leading-tight uppercase rounded hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
+      <ion-icon size="" name="information-circle"></ion-icon>
+    </button>
+    <button type="button" (click)="onEdit()"
+      class=" inline-block px-2 py-2 border border-yellow-600 text-yellow-600 font-medium text-md leading-tight uppercase rounded hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
+      <ion-icon size="" name="create"></ion-icon>
+    </button>
+    <button type="button" (click)="onDelete()"
+      class=" inline-block px-2 py-2 border border-red-600 text-red-600 font-medium text-md leading-tight uppercase rounded hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
+      <ion-icon size="" name="trash"></ion-icon>
+    </button>
+  </div>
+
+</div>

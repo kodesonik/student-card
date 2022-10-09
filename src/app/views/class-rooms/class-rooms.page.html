@@ -1,0 +1,25 @@
+<app-header 
+[title]="'Liste des classes'" 
+[subtitle]="establishment?.name" 
+></app-header>
+<ion-content>
+  <div class="w-full h-full flex justify-center">
+    <div class="w-full max-w-lg h-full p-4">
+
+      <div class="mt-5 grid grid-cols-1" *ngIf="classRooms.length > 0; else noData">
+        <app-class-room *ngFor="let classRoom of classRooms" [data]="classRoom" [establishmentId]="establishment.id" [schoolYearId]="schoolYearId"></app-class-room>
+      </div>
+      <ng-template #noData>
+        <div class="h-full w-full flex justify-center items-center" >
+          <p class="text-md text-gray-500">Pas de donnees!</p>
+        </div>
+      </ng-template>
+    
+    </div>
+  </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="onAdd()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

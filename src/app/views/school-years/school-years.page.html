@@ -1,0 +1,27 @@
+<app-header 
+[title]="'Liste des annees scolaires'" 
+[subtitle]="establishment?.name" 
+></app-header>
+<ion-content>
+  <div class="w-full h-full flex justify-center bg-">
+    <div class="w-full max-w-xl h-full p-4">
+
+      <div class="mt-5 grid grid-cols-2 lg:grid-cols-3 gap-4" *ngIf="schoolYears.length > 0; else noData">
+        <div (click)="displayClasses(schoolYear.id)" *ngFor="let schoolYear of schoolYears" class="shadow-lg bg-blue-900 text-white flex justify-center  p-4 items-center">
+          <h3 class="text-xl" >{{ schoolYear.start }} - {{ schoolYear.end }}</h3>
+        </div>
+      </div>
+      <ng-template #noData>
+        <div class="h-full w-full flex justify-center items-center" >
+          <p class="text-md text-gray-500">Pas de donnees!</p>
+        </div>
+      </ng-template>
+    
+    </div>
+  </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="onAdd()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

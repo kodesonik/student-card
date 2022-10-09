@@ -1,0 +1,46 @@
+<ion-content>
+  <!-- <div class="w-full h-full flex justify-center"> -->
+  <!-- <div class="w-full max-w-lg h-full p-4 grid place-content-stretch"> -->
+  <!-- component -->
+  <div class="h-screen bg-blue-900 flex flex-col space-y-10 justify-center items-center">
+
+    <!-- linkedin logo -->
+    <div class=" flex w-max-md">
+      <h1 class="text-4xl text-center text-blue-200">Gestion De Cartes Scolaires </h1>
+    </div>
+
+    <!-- Layout  -->
+    <div class="bg-white w-96 shadow-xl rounded p-5">
+      <h1 class="text-3xl font-medium">S’identifier</h1>
+      <p class="text-sm">Profitez d'un outil de gestion moderne et efficace pour imprimer vos cartes scolaires.</p>
+      <form class="space-y-5 mt-5">
+        <input type="text" [(ngModel)]="email" class="w-full h-12 border border-gray-800 rounded px-3"
+          placeholder="E-amail" name="email"/>
+        <div class="w-full flex items-center  border border-gray-800 rounded px-3">
+          <input [type]="displayPassword?'text':'password'" [(ngModel)]="password"  name="password" class="w-4/5 h-12"
+            placeholder="Mot de passe" />
+          <span *ngIf="!displayPassword" class="text-blue-700 hover:bg-blue-400 rounded-full px-3 "
+            (click)="displayPassword = true">afficher</span>
+          <span *ngIf="displayPassword" class="text-blue-700 hover:bg-blue-400 rounded-full px-3 "
+            (click)="displayPassword = false">Masquer</span>
+        </div>
+
+        <div class="">
+          <a href="#!" class="font-medium text-blue-700 hover:bg-blue-300 rounded-full p-2">Mot de passe oublié
+            ?</a>
+        </div>
+
+        <button (click)="onLogin()"
+          class="text-center w-full bg-blue-900 rounded-full text-white py-3 font-medium">S'identifier</button>
+
+      </form>
+    </div>
+
+    <!-- Footer -->
+    <!-- <p>Nouveau sur LinkedIn ? <a href="#!" class="text-blue-700 font-medium">S’inscrire</a> </p> -->
+  </div>
+
+  <!-- </div>
+  </div> -->
+
+</ion-content>
