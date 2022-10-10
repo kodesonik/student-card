@@ -1,4 +1,4 @@
-<div class="w-full h-[74mm] pb-4 pt-2 border-b-2 border-primary poppins bg-white">
+<div class="card w-full h-[74mm] pb-4 pt-2 border-b-2 border-primary poppins bg-white">
   <!-- header -->
   <div class="w-full grid grid-cols-2 px-1 pb-1">
     <div class="flex gap-1 items-center">
@@ -14,7 +14,7 @@
         <h5>Republique Togolaise</h5>
         <h5>Travail-Liberte-Patrie</h5>
       </div>
-      <img src="./assets/img/emblem.png" class="w-[20px]" alt="">
+      <img src="./assets/img/emblem.png" class="w-6" alt="">
     </div>
   </div>
   <div class="text-center py-1 bg-primary">
@@ -23,13 +23,13 @@
   </div>
   <!-- body -->
   <div class="w-full">
-    <h5 class="text-primary text-xs text-center font-bold pt-1">Année scolaire {{ data.schoolYear }}</h5>
+    <h5 class="text-primary text-xs text-center font-bold pt-2">Année scolaire {{ data.schoolYear }}</h5>
     <div class="w-full flex ">
       <div class="w-1/3">
         <div class="w-full flex justify-center px-1">
-          <img [src]="data.avatar" class="w-14" alt="">
+          <img [src]="data.avatar" class="w-20" alt="">
         </div>
-        <div class="border-l-[10px] border-primary border-r pt-1">
+        <div class="border-l-[10px] border-primary border-r pt-2">
           <h3 class="text-primary text-center text-[10px]">Le Directeur</h3>
             <img [src]="data.signature" class="h-6 my-2 mx-auto" alt="">
           <h3 class="text-primary text-center text-[10px]">
@@ -39,16 +39,16 @@
           </h3>
         </div>
       </div>
-      <div class="w-2/3 px-4 pt-1">
-        <div class="text-primary text-xs leading-[1.20rem]">NOM: <span class="text-black">{{ data.firstName }}</span></div>
-        <div class="text-primary text-xs leading-[1.20rem]">PRENOM: <span class="text-black">{{ data.lastName }}</span></div>
-        <div class="text-primary text-xs leading-[1.20rem]">CLASSE: <span class="text-black capitalize">{{ data.level }} {{ data.serie }}</span>
+      <div class="w-2/3 px-4 pt-4">
+        <div class="text-primary text-xs leading-[1.22rem]">NOM: <span class="text-black">{{ data.firstName }}</span></div>
+        <div class="text-primary text-xs leading-[1.22rem]">PRENOM: <span class="text-black">{{ data.lastName }}</span></div>
+        <div class="text-primary text-xs leading-[1.22rem]">CLASSE: <span class="text-black capitalize">{{ data.level }} {{ data.serie }}</span>
         </div>
-        <div class="text-primary text-xs leading-[1.20rem]">DATE DE NAISSANCE: <span class="text-black">{{ data.birthDate | date:
+        <div class="text-primary text-xs leading-[1.22rem]">DATE DE NAISSANCE: <span class="text-black">{{ data.birthDate | date:
             'dd/MM/yyyy' }}</span></div>
-        <div class="text-primary text-xs leading-[1.20rem]">SEXE: <span class="text-black">{{ data.sex }}</span></div>
-        <div class="text-primary text-xs leading-[1.20rem]">N MATRICULE: <span class="text-black">{{ data.id }}</span></div>
-        <div class="text-[8px]">Contact à prévenir en cas d'accident: <span class="text-black">{{ data.contact }}</span>
+        <div class="text-primary text-xs leading-[1.22rem]">SEXE: <span class="text-black">{{ data.sex }}</span></div>
+        <div class="text-primary text-xs leading-[1.22rem]">N MATRICULE: <span class="text-black">{{ data.id }}</span></div>
+        <div class="text-[8px] mt-2">Contact à prévenir en cas d'accident: <span class="text-black">{{ data.contact }}</span>
         </div>
       </div>
     </div>

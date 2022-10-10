@@ -8,6 +8,7 @@ import { SchoolYearComponent } from './items/school-year/school-year.component';
 import { EstablishmentInfosComponent } from './details/establishment-infos/establishment-infos.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgxPrintModule } from 'ngx-print';
 import { EstablishmentFormComponent } from './forms/establishment-form/establishment-form.component';
 import { ClassRoomFormComponent } from './forms/class-room-form/class-room-form.component';
 import { StudentFormComponent } from './forms/student-form/student-form.component';
@@ -60,6 +61,7 @@ const utils = [
     IonicModule,
     ImageCropperModule,
     AngularSignaturePadModule,
+    NgxPrintModule
   ],
   exports: [...forms, ...details, ...list, ...items, ...utils]
 })
