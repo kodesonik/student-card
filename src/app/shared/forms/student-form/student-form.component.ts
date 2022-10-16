@@ -1,3 +1,4 @@
+/* eslint-disable curly */
 import { PhotoService } from './../../../services/photo.service';
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable @typescript-eslint/naming-convention */
@@ -42,11 +43,13 @@ export class StudentFormComponent implements OnInit {
     private alertService: AlertService
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.id) this.data = this.studentService.getByParam('id', this.id);
+  }
 
   async onTakePhoto() {
     this.avatar =  await this.photoService.takePicture();
-    this.data.avatar = this.avatar;
+    // this.data.avatar = this.avatar;
   }
 
 

@@ -58,7 +58,7 @@ export class StudentService {
         );
     }
     onSnapshot(q, snapshot => {
-      console.log('response', snapshot.size);
+      // console.log('response', snapshot.size);
       this._data.next(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() as any })));
     });
   }

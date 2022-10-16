@@ -7,9 +7,9 @@
     <div class="w-full max-w-lg h-full p-4">
 
       <form>
-        <div class="mb-6 flex justify-center">
-          <img class="h-20 w-20 object-cover rounded-full" (click)="fileInput.click()"
-            [src]="logo || data.logo ||  'assets/img/logo.png' " alt="Current profile photo" />
+        <div class="mb-6 flex justify-center bg-cyan-200 p-4">
+          <img class="object-contain" (click)="fileInput.click()"
+            [src]="data.logo ||  'assets/img/logo.png' " alt="Current profile photo" />
           <input type="file" (change)="onSelectFile($event)" hidden #fileInput />
         </div>
         <div class="grid gap-6 mb-6 2xl:grid-cols-2">
@@ -105,7 +105,7 @@
               href="#" class="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a>.</label>
         </div> -->
         <button (click)="onValidate()"
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Ajouter</button>
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Valider</button>
       </form>
     </div>
   </div>

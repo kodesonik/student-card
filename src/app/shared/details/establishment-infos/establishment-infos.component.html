@@ -1,3 +1,78 @@
-<p>
-  establishment-infos works!
-</p>
+<ion-header>
+  <h1 class="text-lg text-center text-blue-900 uppercase">{{ data.name }}</h1>
+
+</ion-header>
+<ion-content>
+  <div class="w-full h-full flex justify-center">
+    <div class="w-full max-w-lg h-full p-4">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-2">
+        <div class="shadow-md bg-primary w-full aspect-square">
+          Manager
+        </div>
+        <div class="shadow-md bg-primary w-full aspect-square">
+          Years
+        </div>
+        <div class="shadow-md bg-primary w-full aspect-square">
+          Classrooms
+        </div>
+        <div class="shadow-md bg-primary w-full aspect-square">
+          Students
+        </div>
+      </div>
+      <div class="shadow-md bg-white mt-8 p-2 lg:flex lg:gap-2"> 
+        <div class="mb-6 lg:w-1/4 flex justify-center">
+          <img class="h-fit w-full object-cover rounded-full"
+            [src]="data.logo ||  'assets/img/logo.png' " alt="Current profile photo" />
+        </div>
+        <div class="list-none lg:w-3/4">
+
+        <ul class="mb-2">
+
+          <li class="w-full flex mb-2">
+            <span for="name"
+              class="w-2/5 block text-sm font-medium text-gray-900 dark:text-gray-300">Etablissement</span>
+            <span id="name"
+              class="text-sm text-blue-900">{{ data.name }}</span>
+          </li>
+          <li class="w-full flex mb-2">
+            <span for="inspection"
+              class="w-2/5 block text-sm font-medium text-gray-900 dark:text-gray-300">Inspection</span>
+            <span id="inspection"
+              class="text-sm text-blue-900">{{ data.inspection}}</span>
+          </li>
+          <li class="w-full flex mb-2">
+            <span for="phone1" class="w-2/5 block text-sm font-medium text-gray-900 dark:text-gray-300">Contact
+              1</span>
+            <span  id="phone1"
+              class="text-sm text-blue-900">{{ data.phoneNumber }}</span>
+          </li>
+          <li class="w-full flex mb-2">
+            <span for="phone2" class="w-2/5 block text-sm font-medium text-gray-900 dark:text-gray-300">Contact2</span>
+            <span  id="phone2"
+              class="text-sm text-blue-900" >{{ data.phoneNumber2 }}</span>
+          </li>
+          <li class="w-full flex mb-2">
+            <span for="address" class="w-2/5 block text-sm font-medium text-gray-900 dark:text-gray-300">Adresse</span>
+            <span id="address"
+              class="text-sm text-blue-900">{{ data.address }}</span>
+          </li>
+          <li class="w-full flex mb-2">
+            <span for="po-box" class="w-2/5 block text-sm font-medium text-gray-900 dark:text-gray-300">Boite
+              Postale</span>
+            <span id="po-box"
+              class="text-sm text-blue-900" >{{ data.poBOX }}</span>
+          </li>
+
+            </ul>
+            <div class="flex justify-end">
+              <button (click)="onEdit()"
+              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Modifier</button>
+         
+            </div>
+          </div>
+
+       
+      </div>
+    </div>
+  </div>
+</ion-content>

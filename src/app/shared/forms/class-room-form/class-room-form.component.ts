@@ -1,3 +1,4 @@
+/* eslint-disable curly */
 /* eslint-disable @typescript-eslint/naming-convention */
 import { AlertService } from './../../../services/alert.service';
 import { ClassRoom } from 'src/app/models';
@@ -31,21 +32,28 @@ export class ClassRoomFormComponent implements OnInit {
     private alertService: AlertService
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.id) this.data = this.classRoomService.getByParam('id', this.id);
+  }
 
   async onValidate() {
     const loading = await this.loadingController.create({
-      message: 'Ajout de la classe...',
+      message: this.id?'Modification de la classe':'Ajout de la classe...',
       duration: 30000,
       spinner: 'bubbles'
     });
     await loading.present();
 
+    let toastMsg = 'Ajoute avec success!!!';
     // save data
-
-    await this.classRoomService.add(this.data);
+    if (!this.id) {
+      await this.classRoomService.add(this.data);
+    } else {
+      toastMsg = 'Modifie avec success!!!';
+      await this.classRoomService.edit(this.data);
+    }
     loading.dismiss();
-    this.alertService.presentToastSuccess('Ajoute avec success!!!');
+    this.alertService.presentToastSuccess(toastMsg);
     this.onClose();
   }
 

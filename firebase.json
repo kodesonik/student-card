@@ -7,7 +7,7 @@
     ],
     "headers": [
       {
-        "source": "*.[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f].+(css|js)",
+        "source": "/build/app/**",
         "headers": [
           {
             "key": "Cache-Control",
@@ -16,7 +16,7 @@
         ]
       },
       {
-        "source": "/@(ngsw-worker.js|ngsw.json)",
+        "source": "ngsw-config.json",
         "headers": [
           {
             "key": "Cache-Control",

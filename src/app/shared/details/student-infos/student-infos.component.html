@@ -1,3 +1,67 @@
-<p>
-  student-infos works!
-</p>
+<ion-header>
+  <h1 class="text-lg text-center text-blue-900 uppercase">{{ data.firstName }} {{ data.lastName }}</h1>
+
+</ion-header>
+<ion-content>
+  <div class="w-full h-full flex justify-center">
+    <div class="w-full max-w-lg h-full p-4">
+
+        <div class="flex justify-center mb-4">
+          <img class="h-fit w-1/2 object-cover"
+            [src]="data.avatar ||  'assets/img/avatar.png' " alt="Current profile photo" />
+        </div>
+        <div class="list-none">
+
+        <ul class="mb-2">
+
+          <li class="w-full flex mb-2">
+            <span for="name"
+              class="w-2/5 block text-sm font-medium text-gray-900 dark:text-gray-300">Etablissement</span>
+            <span id="name"
+              class="text-sm text-blue-900">{{ data.firstName }}</span>
+          </li>
+          <li class="w-full flex mb-2">
+            <span for="inspection"
+              class="w-2/5 block text-sm font-medium text-gray-900 dark:text-gray-300">Inspection</span>
+            <span id="inspection"
+              class="text-sm text-blue-900">{{ data.lastName}}</span>
+          </li>
+          <li class="w-full flex mb-2">
+            <span for="phone1" class="w-2/5 block text-sm font-medium text-gray-900 dark:text-gray-300">Contact
+              1</span>
+            <span  id="phone1"
+              class="text-sm text-blue-900">{{ data.phoneNumber }}</span>
+          </li>
+          <li class="w-full flex mb-2">
+            <span for="phone2" class="w-2/5 block text-sm font-medium text-gray-900 dark:text-gray-300">Sexe</span>
+            <span  id="phone2"
+              class="text-sm text-blue-900" >{{ data.sex }}</span>
+          </li>
+          <li class="w-full flex mb-2">
+            <span for="address" class="w-2/5 block text-sm font-medium text-gray-900 dark:text-gray-300">Date de naissance</span>
+            <span id="address"
+              class="text-sm text-blue-900">{{ data.birthDate }}</span>
+          </li>
+          <li class="w-full flex mb-2">
+            <span for="po-box" class="w-2/5 block text-sm font-medium text-gray-900 dark:text-gray-300">Lieu
+              de Naissance</span>
+            <span id="po-box"
+              class="text-sm text-blue-900" >{{ data.birthPlace }}</span>
+          </li>
+          <li class="w-full flex mb-2">
+            <span for="po-box" class="w-2/5 block text-sm font-medium text-gray-900 dark:text-gray-300">Naionalite</span>
+            <span id="po-box"
+              class="text-sm text-blue-900" >{{ data.nationality }}</span>
+          </li>
+            </ul>
+            <div class="flex justify-end pb-8">
+              <button (click)="onEdit()"
+              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Modifier</button>
+         
+            </div>
+          </div>
+
+       
+      </div>
+    </div>
+</ion-content>

@@ -54,8 +54,6 @@ export class ClassRoomService {
   }
 
   getByParam(param: string, value: any) {
-    console.log(param, value);
-    console.log(this._data.value);
     return this._data.value.find(classRoom => classRoom[param] === value);
   }
 
