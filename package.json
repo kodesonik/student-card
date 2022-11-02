@@ -11,7 +11,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "deploy": "npm run build --prod && firebase deploy --only hosting",
-    "build:prod": "ionic build --prod"
+    "build:prod": "ng run app:build:production"
   },
   "private": true,
   "dependencies": {
