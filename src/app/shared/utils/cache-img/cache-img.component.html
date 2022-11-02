@@ -1,0 +1,6 @@
+  <img [src]="_src" *ngIf="_src!=='';else loading" [class]="cssClasses" (click)="onClick($event)" >
+<ng-template #loading>
+  <div class="w-full h-full flex justify-center items-center" >
+    <ion-spinner></ion-spinner>
+  </div>
+</ng-template>

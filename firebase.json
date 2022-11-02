@@ -16,7 +16,7 @@
         ]
       },
       {
-        "source": "ngsw-config.json",
+        "source": "/@(ngsw-worker.js|ngsw.json)",
         "headers": [
           {
             "key": "Cache-Control",

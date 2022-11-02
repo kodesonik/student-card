@@ -7,6 +7,7 @@ import { ClassRoomService } from './class-room.service';
 import { SchoolYearService } from './school-year.service';
 import { EstablishmentService } from './establishment.service';
 import { AuthService } from './auth.service';
+import { NetworkService } from './network.service';
 
 export {
     AuthService,
@@ -17,5 +18,6 @@ export {
     CardService,
     PhotoService,
     UploadService,
-    AlertService
+    AlertService,
+    NetworkService
 };

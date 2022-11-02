@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CACHE_SIZE_UNLIMITED, enableIndexedDbPersistence, Firestore, initializeFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { AuthService } from './services';
+import { AppUpdateService } from './services/app-update.service';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +13,10 @@ export class AppComponent {
   constructor(
     private db: Firestore,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private appUpdateService: AppUpdateService,
     ) {
+      this.appUpdateService.subscribeUpdate();
     enableIndexedDbPersistence(db)
       .catch((err) => {
         if (err.code === 'failed-precondition') {

@@ -37,9 +37,15 @@
               name="managerName" [(ngModel)]="data.managerName" placeholder="AMA KPATCHA" required>
           </div>
         </div>
+        <div *ngIf="id && data.signature">
+          <div class="mb-6">
+            <label for="start" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Signature preenregistree du directeur</label>
+            <img [src]="signature" class="w-full" alt="">
+          </div>
+        </div>
         <div>
           <div class="mb-6">
-            <label for="start" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">SIgnature du directeur <span *ngIf="signature" (click)="drawClear()" class="text-xs text-end text-red-600">Effacer</span></label>
+            <label for="start" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Signature du directeur <span *ngIf="signature" (click)="drawClear()" class="text-xs text-end text-red-600">Effacer</span></label>
           <signature-pad #signatureRef [options]="signaturePadOptions" (drawStart)="drawStart($event)" (drawEnd)="drawComplete($event)"></signature-pad>
           </div>
         </div>
