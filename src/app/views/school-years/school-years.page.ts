@@ -31,7 +31,7 @@ export class SchoolYearsPage implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.schoolYearService.clearData();
-    this.dataSub = this.schoolYearService.$data.subscribe( res => this.schoolYears = res);
+    this.dataSub = this.schoolYearService.$data.subscribe(res => this.schoolYears = res);
     this.routeSub = this.route.params.subscribe(params => {
       this.establishment = this.establishmentService.getByParam('id', params['establishmentId']);
       this.schoolYearService.load(this.establishment.id);
@@ -46,17 +46,24 @@ export class SchoolYearsPage implements OnInit, OnDestroy {
   displayClasses(schoolYearId) {
     if (!schoolYearId) return this.alertService.presentToastError('Choississez d\'abord une annee scolaire!');
 
-   this.router.navigate(['class-rooms', this.establishment.id, schoolYearId]);
- }
+    this.router.navigate(['class-rooms', this.establishment.id, schoolYearId]);
+  }
 
-async onAdd() {
-  const modal = await this.modalController.create({
-  component: SchoolYearFormComponent,
-  componentProps: { value: 123 }
-  });
+  async onAdd() {
+    const modal = await this.modalController.create({
+      component: SchoolYearFormComponent,
+    });
 
-  await modal.present();
+    await modal.present();
 
-}
+  }
 
+  async onEdit(id) {
+    const modal = await this.modalController.create({
+      component: SchoolYearFormComponent,
+      componentProps: { id }
+    });
+
+    await modal.present();
+  }
 }

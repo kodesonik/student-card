@@ -1,11 +1,17 @@
 <ion-header>
   <div class="w-full grid  grid-cols-1  lg:grid-cols-2 items-center gap-2 bg-blue-900">
-    <div class="px-4 flex gap-8">
-      <button *ngIf="!noReturn" class="text-md text-primary" (click)="onBack()">Retour</button>
+    <div class="px-4 flex justify-between gap-4">
+      <button *ngIf="!noReturn" class="text-md text-primary" (click)="onBack()">
+        <ion-icon name="chevron-back" size="large"></ion-icon>
+      </button>
       <div >
         <h1 class="text-lg text-center text-white">{{ title }}</h1>
         <p class="text-xs text-center text-gray-300">{{ subtitle }} <span *ngIf="optional">{{ optional }}</span></p>
       </div>
+      <button class="relative" (click)="onPrint()">
+        <ion-icon size="large"  name="print" color="secondary"></ion-icon>
+        <div class="absolute top-0 right-0 text-xs text-white bg-red-700 p-1 rounded-full" >{{ cardsLength }}</div>
+      </button>
     </div>
    
     <div class="flex justify-center w-full">

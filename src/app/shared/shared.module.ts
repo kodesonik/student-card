@@ -1,3 +1,4 @@
+import { CacheImgComponent } from './utils/cache-img/cache-img.component';
 import { SchoolYearFormComponent } from './forms/school-year-form/school-year-form.component';
 import { CropImageComponent } from './utils/crop-image/crop-image.component';
 import { ModalHeaderComponent } from './utils/modal-header/modal-header.component';
@@ -50,7 +51,8 @@ const items = [
 const utils = [
   HeaderComponent,
   ModalHeaderComponent,
-  CropImageComponent
+  CropImageComponent,
+  CacheImgComponent
 ];
 
 @NgModule({

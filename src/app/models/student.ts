@@ -1,7 +1,7 @@
 import { Url } from 'url';
 import { Sex } from './../types/';
 export default interface Student {
-    avatar: string | Url;
+    avatar: string;
     id: string;
     firstName: string;
     lastName: string;

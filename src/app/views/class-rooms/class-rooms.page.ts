@@ -1,3 +1,4 @@
+import { SeedService } from './../../services/seed.service';
 /* eslint-disable curly */
 /* eslint-disable @typescript-eslint/dot-notation */
 import { Component, OnDestroy, OnInit } from '@angular/core';
@@ -25,7 +26,8 @@ export class ClassRoomsPage implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private modalController: ModalController,
     private classRoomService: ClassRoomService,
-    private establishmentService: EstablishmentService
+    private establishmentService: EstablishmentService,
+    private seedService: SeedService
   ) { }
 
   ngOnInit() {
@@ -50,6 +52,12 @@ export class ClassRoomsPage implements OnInit, OnDestroy {
     });
 
     await modal.present();
+  }
+
+  onSeed(ev) {
+    const file = ev.target.files[0];
+    console.log(file);
+   if(file) this.seedService.seedClassrooms(file);
   }
 
 }

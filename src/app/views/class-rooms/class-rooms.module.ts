@@ -1,3 +1,4 @@
+import { PipesModule } from './../../pipes/pipes.module';
 import { SharedModule } from './../../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -15,6 +16,7 @@ import { ClassRoomsPage } from './class-rooms.page';
     FormsModule,
     IonicModule,
     ClassRoomsPageRoutingModule,
+    PipesModule,
     SharedModule
   ],
   declarations: [ClassRoomsPage]

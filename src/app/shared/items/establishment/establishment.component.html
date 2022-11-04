@@ -2,7 +2,11 @@
   <div class="flex items-center gap-2" (click)="displayYears()">
 
     <div>
-      <img class="w-20 " [src]="data.logo || 'assets/img/logo.png'" alt="" />
+      <!-- <img class="w-20 " [src]="data.logo || 'assets/img/logo.png'" alt="" /> -->
+      <img *ngIf="!data.logo; else logo" [src]="'assets/img/logo.png'" class="w-20" alt="">
+      <ng-template #logo>
+        <app-cache-img  [src]="data.logo" [cssClasses]="'w-20'"></app-cache-img>
+      </ng-template>
     </div>
 
     <div class="w-full">

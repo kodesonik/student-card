@@ -1,15 +1,18 @@
-<ion-header>
-  <h1 class="text-lg text-center text-blue-900">Ajouter un eleve</h1>
-
-</ion-header>
+<app-modal-header [title]="'Ajouter un eleve'"></app-modal-header>
 <ion-content>
   <div class="w-full h-full flex justify-center">
     <div class="w-full max-w-lg h-full p-4">
 
       <form>
-        <div class="mb-6 flex justify-center">
-          <img class="h-40 w-40 object-cover rounded-full" (click)="onTakePhoto()"
-            [src]=" avatar || data.avatar || 'assets/img/logo.png' " alt="Current profile photo" />
+        <div class="mb-6 flex justify-center relative">
+          <button class="absolute top-0 right-0 text-secondary" (click)="onCropPhoto()">
+            <ion-icon name="crop"></ion-icon>
+          </button>
+          <app-cache-img *ngIf="(data.avatar && !avatar);else img "  cssClasses="h-40 w-40 object-cover rounded-full" [src]="data.avatar" (click)="onTakePhoto()"></app-cache-img>
+          <ng-template #img >
+            <img  class="h-40 w-40 object-cover rounded-full" (click)="onTakePhoto()"
+            [src]="avatar || 'assets/img/logo.png' " alt="Current profile photo" />
+          </ng-template>
         </div>
         <div class="grid gap-6 mb-6 2xl:grid-cols-2">
           <div>

@@ -20,6 +20,10 @@ const routes: Routes = [
     loadChildren: () => import('./views/students/students.module').then( m => m.StudentsPageModule)
   },
   {
+    path: 'print-cards',
+    loadChildren: () => import('./views/print-cards/print-cards.module').then( m => m.PrintCardsPageModule)
+  },
+  {
     path: 'printing-display',
     loadChildren: () => import('./views/printing-display/printing-display.module').then( m => m.PrintingDisplayPageModule)
   },
@@ -31,6 +35,7 @@ const routes: Routes = [
     path: 'school-years/:establishmentId',
     loadChildren: () => import('./views/school-years/school-years.module').then( m => m.SchoolYearsPageModule)
   },
+
 ];
 
 @NgModule({

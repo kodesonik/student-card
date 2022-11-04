@@ -1,11 +1,27 @@
-<app-header [title]="'Liste des eleves'"
+<app-header (searchValue)="searchValue = $event" [title]="'Liste des eleves'"
   [subtitle]="establishment?.name + ' ' + classRoom?.level + ' ' + classRoom?.serie" [optional]="classRoom?.num">
 </app-header>
 <ion-content>
   <div class="w-full h-full flex justify-center">
     <div class="w-full max-w-xl h-full p-4">
       <div class="mt-5 grid grid-cols-1" *ngIf="students.length > 0; else noData">
-        <app-student *ngFor="let student of students" [data]="student"></app-student>
+        <div class="w-full flex justify-between items-center border-b border-gray-400 shadow-sm p-2 rounded">
+
+          <div class="flex gap-2 items-center" >
+              <input id="remember" type="checkbox"(change)="onSelectAll()"
+              class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+              #checkbox required>
+            <span>Avatar</span>
+        
+            <div>
+             <span>Identite</span>
+            </div>
+          </div>
+          <div class="flex h-full items-center gap-4">
+          <span>Actions</span>
+          </div>
+        </div>
+        <app-student *ngFor="let student of students | order: ['firstName','lastName'] | filterByName: searchValue" [data]="student" (display)="onDisplayInfos(student.id)" (edit)="onEdit(student.id)" (delete)="onDelete(student.id)" (checked)="onCheck($event, student)"></app-student>
       </div>
       <ng-template #noData>
         <div class="h-full w-full flex justify-center items-center">
@@ -15,25 +31,20 @@
 
     </div>
 
-    <ion-fab vertical="bottom" horizontal="start" slot="fixed">
-      <ion-fab-button (click)="onSelectAll()" color="success">
-        <ion-icon name="checkbox"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
-
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button>
-        <ion-icon slot="start" name="add"></ion-icon>
-      </ion-fab-button>
-      <ion-fab-list side="top">
-        <ion-fab-button (click)="onAdd()">
-          <ion-icon name="person-add"></ion-icon>
-        </ion-fab-button>
-        <ion-fab-button (click)="onPrint()">
-          <ion-icon name="print"></ion-icon>
-        </ion-fab-button>
-      </ion-fab-list>
-    </ion-fab>
   </div>
+  <input type="file" name="" id="" (change)="onSeed($event)" class="hidden" #fileInput>
 
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button (click)="fileInput.click()" color="success">
+      <ion-icon name="file-tray-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+
+    <ion-fab-button (click)="onAdd()">
+      <ion-icon name="person-add"></ion-icon>
+    </ion-fab-button>
+
+  </ion-fab>
 </ion-content>

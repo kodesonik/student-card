@@ -1,10 +1,14 @@
 <div class="w-full flex justify-between items-center border-b border-gray-400 shadow-sm p-2 rounded">
 
   <div class="flex gap-2 items-center" >
-      <input id="remember" type="checkbox" [(ngModel)]="data.isChecked"
+      <input id="remember" type="checkbox" [(ngModel)]="data.isChecked" (change)="onChecked($event)"
       class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
       #checkbox required>
-    <img (click)="checkbox.click()" [src]="data.avatar || 'img/assets/avatar.png'" class="h-12 w-12 object-cover rounded-full" alt="">
+    <img *ngIf="!data.avatar; else avatar" (click)="checkbox.click()" [src]="'assets/img/avatar.png'" class="h-12 w-12 object-cover rounded-full" alt="">
+    <ng-template #avatar>
+      <app-cache-img (click)="checkbox.click()"  [src]="data.avatar" [cssClasses]="'h-12 w-12 object-cover rounded-full'"></app-cache-img>
+    </ng-template>
+
     <div (click)="checkbox.click()">
       <h3 class="text-blue-900 text-lg">{{ data.firstName }} {{ data.lastName }}</h3>
       <p class="text-md text-gray-500">{{ data.birthDate | date: "dd-MM-YYYY" }}</p>

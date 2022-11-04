@@ -5,8 +5,12 @@
 
       <div class="mt-5 grid grid-cols-2 lg:grid-cols-3 gap-4" *ngIf="schoolYears.length > 0; else noData">
         <div (click)="displayClasses(schoolYear.id)" *ngFor="let schoolYear of schoolYears"
-          class="shadow-md text-blue-900 bg-white  p-4">
-          <h3 class="text-xl text-center">{{ schoolYear.start }} - {{ schoolYear.end }}</h3>
+          class="shadow-md text-blue-900 bg-white  p-4 ">
+          <h3 class="text-lg text-center">{{ schoolYear.start }} - {{ schoolYear.end }} <button
+              (click)="onEdit(schoolYear.id)">
+              <ion-icon name="create-outline"></ion-icon>
+            </button>
+          </h3>
           <hr>
           <h4 class="text-sm"> <span *ngIf="schoolYear.managerSex === 'M'; else sexF">M.</span>
             <ng-template #sexF><span>Mme </span></ng-template>{{ schoolYear.managerName }}

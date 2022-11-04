@@ -14,8 +14,10 @@ import {
   onSnapshot,
   serverTimestamp,
   query,
-  orderBy
+  orderBy,
+  getDocs
 } from '@angular/fire/firestore';
+import { LoadingController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 import { SchoolYear } from '../models';
 
@@ -31,7 +33,9 @@ export class SchoolYearService {
   private _data = new BehaviorSubject<SchoolYear[]>([]);
   private _establishmentId: string;
 
-  constructor() {
+  constructor(
+    private loadingController: LoadingController
+  ) {
     this.firestore = getFirestore(getApp());
   }
 
@@ -43,15 +47,28 @@ export class SchoolYearService {
     this._data.next([]);
   }
 
-  load(establishmentId: string) {
+  async load(establishmentId) {
+    this._data.next([]);
     this._establishmentId = establishmentId;
     this.dataCollection = collection(this.firestore, 'establishments', this._establishmentId, this.collectionName);
     const q = query(this.dataCollection, orderBy('start', 'desc'));
-    onSnapshot(q, snapshot => {
-      const schoolYears = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() as any }));
-      this._data.next(schoolYears);
+    const loading = await this.loadingController.create({
+      message: 'Chargement des donnees',
+      duration: 15000,
+      spinner: 'bubbles'
+    });
+    await loading.present();
+    getDocs(q).then(res => {
+      loading.dismiss();
+    if (res.size)  this._data.next(res.docs.map(doc => ({ id: doc.id, ...doc.data() as any })));
+      this.listen();
+    }).catch(err => {
+      loading.dismiss();
+      console.log(err);
+      this.listen();
     });
   }
+
 
   getByParam(param: string, value: any) {
     return this._data.value.find(est => est[param] === value);
@@ -74,4 +91,12 @@ export class SchoolYearService {
     return await deleteDoc(docReference);
   }
 
+
+  private listen() {
+    const q = query(this.dataCollection, orderBy('start', 'desc'));
+    onSnapshot(q, snapshot => {
+      const schoolYears = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() as any }));
+      this._data.next(schoolYears);
+    });
+  }
 }
