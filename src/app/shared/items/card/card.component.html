@@ -1,4 +1,4 @@
-<div class="card w-full h-[69.6mm] pb-2 pt-2 border-b-2 border-primary poppins bg-white">
+<div class="card w-full h-[73mm] pb-4 pt-2 border-b-2 border-primary poppins bg-white">
   <!-- header -->
   <div class="w-full grid grid-cols-2 px-1 pb-1">
     <div class="flex gap-1 items-center">
@@ -27,14 +27,19 @@
     <div class="w-full flex ">
       <div class="w-1/3">
         <div class="w-full flex justify-center px-1">
-          <!-- <img [src]="data.avatar" class="w-16" alt=""> -->
-          <app-cache-img [src]="data.avatar" [cssClasses]="'w-16'"></app-cache-img>
+          <img  *ngIf="!data.avatar;else avatar" src="assets/img/avatar.png" class="w-16 h-16" alt="">
+          <ng-template #avatar>
+            <app-cache-img [src]="data.avatar" [cssClasses]="'w-16 aspect-square'"></app-cache-img>
+          </ng-template>
         </div>
         <div class="border-l-[10px] border-primary border-r pt-2">
           <h3 class="text-primary text-center text-[10px]">Le Directeur</h3>
             <!-- <img [src]="data.signature" class="h-5 my-2 mx-auto" alt=""> -->
-            <app-cache-img *ngIf="data.signature" [src]="data.signature" [cssClasses]="'h-5 my-2 mx-auto'"></app-cache-img>
-          <h3 class="text-primary text-center text-[10px]">
+            <app-cache-img *ngIf="data.signature; else blankSIgnature" [src]="data.signature" [cssClasses]="'h-5 my-2 mx-auto'"></app-cache-img>
+            <ng-template #blankSIgnature>
+              <div class="w-full h-5"></div>
+            </ng-template>
+            <h3 class="text-primary text-center text-[10px]">
             <span *ngIf="data.managerSex === SEX.M; else sexF">M.</span>
             <ng-template #sexF><span>Mme </span></ng-template>
             {{ data.managerName }}

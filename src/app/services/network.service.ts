@@ -11,13 +11,12 @@ export class NetworkService {
 
   private _$networkStatus = new BehaviorSubject<ConnectionStatus>(null);
   constructor() {
-    // this.listen();
    }
 
 
   listen() {
     Network.addListener('networkStatusChange', status => {
-      // console.log('Network status changed', status);
+      console.log('Network status changed', status);
       this._$networkStatus.next(status);
     });
   }
@@ -26,7 +25,6 @@ export class NetworkService {
     return this._$networkStatus.asObservable();
   }
 
-  
   async logCurrentNetworkStatus() {
     const status = await Network.getStatus();
     this._$networkStatus.next(status);

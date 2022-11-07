@@ -10,6 +10,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class StudentComponent implements OnInit {
 
   @Input() data: Student;
+  @Input() index: number;
   @Output() checked = new EventEmitter();
   @Output() edit = new EventEmitter();
   @Output() display = new EventEmitter();

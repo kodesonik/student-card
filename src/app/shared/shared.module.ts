@@ -22,6 +22,7 @@ import { CardComponent } from './items/card/card.component';
 import { HeaderComponent } from './utils/header/header.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { StudentsComponent } from './list/students/students.component';
+import { FooterComponent } from './utils/footer/footer.component';
 
 const forms = [
   EstablishmentFormComponent,
@@ -50,6 +51,7 @@ const items = [
 
 const utils = [
   HeaderComponent,
+  FooterComponent,
   ModalHeaderComponent,
   CropImageComponent,
   CacheImgComponent

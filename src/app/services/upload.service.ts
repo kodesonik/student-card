@@ -1,27 +1,38 @@
+import { Observable } from 'rxjs';
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable curly */
 import { NetworkService } from './network.service';
 import { Injectable } from '@angular/core';
 // import { Url } from 'url';
 import { Directory, Filesystem } from '@capacitor/filesystem';
 import { uploadString, ref, getStorage, getDownloadURL, uploadBytes } from '@angular/fire/storage';
+import { BehaviorSubject } from 'rxjs';
 const CACHE_FOLDER = 'CACHED-IMG';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UploadService {
-
+  private _offlineDataCount = new BehaviorSubject<number>(0);
   constructor(
     private networkService: NetworkService
-  ) { }
+  ) { 
+    this.countCachedFiles().then(count => this._offlineDataCount.next(count));
+  }
 
+  get $offlineDataCount(): Observable<number> {
+    return this._offlineDataCount.asObservable();
+  }
 
   async post(path: string, file, meta?: string[]): Promise<any> {
     console.log('post avatar');
     if (meta) {
       const connectionStatus = await this.networkService.logCurrentNetworkStatus();
       if (!(connectionStatus.connected && connectionStatus.connectionType === 'wifi')){
-        return this.saveOnDisk(path, file, meta);
+        const url = this.saveOnDisk(path, file, meta);
+        const count = this._offlineDataCount.value + 1;
+        this._offlineDataCount.next(count);
+        return url;
       }
     };
     const fileRef = ref(getStorage(), path + new Date().getTime());
@@ -79,5 +90,13 @@ export class UploadService {
       };
       reader.readAsDataURL(blob);
     });
+  }
+
+  async countCachedFiles() {
+    const { files } = await Filesystem.readdir({
+      directory: Directory.Cache,
+      path: 'CACHED-IMG'
+    });
+    return files.filter(file => file.name.charAt(file.name.length - 1) === 'l').length;
   }
 }

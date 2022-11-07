@@ -1,7 +1,8 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { take } from 'rxjs/operators';
 import { Card } from 'src/app/models';
-import { CardService } from 'src/app/services';
+import { CardService, PrintService } from 'src/app/services';
 
 @Component({
   selector: 'app-print-cards',
@@ -9,20 +10,26 @@ import { CardService } from 'src/app/services';
   styleUrls: ['./print-cards.page.scss'],
 })
 export class PrintCardsPage implements OnInit {
-  cards: Card[] = [];
+  cardsPages: Card[][] = [];
+  isPrinting = false;
+
   constructor(
     private location: Location,
     private cardService: CardService,
+    private printService: PrintService
   ) { }
 
   ngOnInit() {
-    this.cardService.$cards.subscribe(res => this.cards = res);
+    console.log('printing cards');
+    this.cardService.$cards.pipe(take(1)).toPromise().then(res => {
+      this.cardsPages = [];
+      for(let i = 0; i < res.length; i+=8){
+          this.cardsPages.push(res.slice(i, i+8));
+      }
+      console.log(this.cardsPages);
+      this.printService.onDataReady();
+    });
   }
-
-  onPrint() {
-    window.print();
-  }
-
 
   onBack() {
     this.location.back();

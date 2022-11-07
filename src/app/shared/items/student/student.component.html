@@ -4,6 +4,7 @@
       <input id="remember" type="checkbox" [(ngModel)]="data.isChecked" (change)="onChecked($event)"
       class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
       #checkbox required>
+      <span>{{ index + 1 }} - </span>
     <img *ngIf="!data.avatar; else avatar" (click)="checkbox.click()" [src]="'assets/img/avatar.png'" class="h-12 w-12 object-cover rounded-full" alt="">
     <ng-template #avatar>
       <app-cache-img (click)="checkbox.click()"  [src]="data.avatar" [cssClasses]="'h-12 w-12 object-cover rounded-full'"></app-cache-img>

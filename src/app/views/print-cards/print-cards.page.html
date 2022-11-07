@@ -1,4 +1,4 @@
-<ion-header class="print:hidden">
+<!-- <ion-header class="print:hidden">
   <div class="w-full grid  grid-cols-1  lg:grid-cols-2 items-center gap-2 bg-blue-900">
     <div class="px-4 flex gap-4">
       <button class="text-md text-primary" (click)="onBack()">
@@ -12,12 +12,12 @@
   </div>
 </ion-header>
 
-<ion-content scrollY="false" >
-  <div class="w-full bg-white h-full flex justify-center overflow-auto print:overflow-hidden">
-    <div class="print-page" >
-      <div class="grid grid-cols-2">
-        <app-card class="border-l border-r border-black" *ngFor="let card of cards" [data]="card" ></app-card>
-        <!-- <app-card class="border-l border-r border-black" *ngFor="let card of cards" [data]="card" ></app-card>
+<ion-content scrollY="false" > -->
+<!-- <ion-content> -->
+  <!-- <div class="w-full bg-white h-full overflow-y-auto"> -->
+    <div class="grid grid-cols-2 gap-1 print-page" *ngFor="let cards of cardsPages">
+      <app-card class="" *ngFor="let card of cards" [data]="card"></app-card>
+      <!-- <app-card class="border-l border-r border-black" *ngFor="let card of cards" [data]="card" ></app-card>
         <app-card class="border-l border-r border-black" *ngFor="let card of cards" [data]="card" ></app-card>
         <app-card class="border-l border-r border-black" *ngFor="let card of cards" [data]="card" ></app-card>
         <app-card class="border-l border-r border-black" *ngFor="let card of cards" [data]="card" ></app-card>
@@ -34,12 +34,12 @@
         <app-card class="border-l border-r border-black" *ngFor="let card of cards" [data]="card" ></app-card>
         <app-card class="border-l border-r border-black" *ngFor="let card of cards" [data]="card" ></app-card>
         <app-card class="border-l border-r border-black" *ngFor="let card of cards" [data]="card" ></app-card> -->
-      </div>
     </div>
-  </div>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="print:hidden">
+  <!-- </div> -->
+<!-- </ion-content> -->
+<!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="print:hidden">
     <ion-fab-button (click)="onPrint()">
       <ion-icon name="print"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-</ion-content>
+</ion-content> -->

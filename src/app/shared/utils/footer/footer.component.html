@@ -1,0 +1,23 @@
+<ion-footer>
+
+    <div class="flex gap-2 p-2 justify-between items-center">
+      <button [disabled]="!isOnline" (click)="presentAlertConfirm()" class="bg-blue-900 p-1 text-white rounded">
+        <ion-icon size="large" name="sync-outline"></ion-icon>
+      </button>
+      <div class="w-full">
+        <div class="w-64" *ngIf="imagesLength && progress; else status">
+          <ion-progress-bar [value]="progress"></ion-progress-bar>
+        </div>
+        <ng-template #status>
+          <div class="w-full flex gap-4 items-center">
+            <span>{{ imagesLength }} img a sync</span>
+            <div [ngClass]="{'w-2 h-2 rounded-full': true, 'bg-red-500': imagesLength , 'bg-green-700': !imagesLength}" class=""></div>
+          </div>
+        </ng-template>
+      </div>
+     
+      <div [ngClass]="{'bg-white p-1': true, 'text-red-600': !isOnline, 'text-green-700': isOnline }">
+        <ion-icon size="large" name="radio"></ion-icon>
+      </div>
+    </div>
+</ion-footer>

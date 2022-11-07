@@ -68,7 +68,7 @@ export class ClassRoomComponent implements OnInit {
   onDisplayStudents() {
     if (!this.schoolYearId) return this.alertService.presentToastError('Choississez d\'abord une annee scolaire!');
 
-    this.router.navigate(['students', this.establishmentId, this.schoolYearId, this.data.id]);
+    this.router.navigate(['app/students', this.establishmentId, this.schoolYearId, this.data.id]);
   }
 
 }

@@ -1,0 +1,2 @@
+.print-page { page-break-after: always; }
+.print-page:last-child { page-break-after: avoid; }

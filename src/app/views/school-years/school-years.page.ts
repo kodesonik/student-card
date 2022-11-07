@@ -46,7 +46,7 @@ export class SchoolYearsPage implements OnInit, OnDestroy {
   displayClasses(schoolYearId) {
     if (!schoolYearId) return this.alertService.presentToastError('Choississez d\'abord une annee scolaire!');
 
-    this.router.navigate(['class-rooms', this.establishment.id, schoolYearId]);
+    this.router.navigate(['app/class-rooms', this.establishment.id, schoolYearId]);
   }
 
   async onAdd() {

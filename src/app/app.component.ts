@@ -1,3 +1,4 @@
+import { PrintService } from './services/print.service';
 import { UploadService } from 'src/app/services';
 import { Component } from '@angular/core';
 import {
@@ -26,15 +27,17 @@ export class AppComponent {
     private loadingController: LoadingController,
     private appUpdateService: AppUpdateService,
     private networkService: NetworkService,
-    private uploadService: UploadService
+    private uploadService: UploadService,
+    public printService: PrintService
   ) {
     // this.clearCacheFolder();
     this.appUpdateService.subscribeUpdate();
     // this.networkService.$networkStatus.subscribe(res => {
     // });
+    this.networkService.listen();
     this.networkService.logCurrentNetworkStatus().then(res => {
       if (res && res.connected && res.connectionType === 'wifi') {
-      this.synchronizeImage();
+      // this.synchronizeImage();
       }
     });
 
@@ -57,7 +60,7 @@ export class AppComponent {
     authService.getAuthState().subscribe(
       res => {
         if (res) {
-          router.navigate(['establishments']);
+          router.navigate(['app/establishments']);
         }
       }
     );

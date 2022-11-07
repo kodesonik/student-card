@@ -1,3 +1,5 @@
+import { PrintService } from './../../../services/print.service';
+/* eslint-disable quote-props */
 import { Location } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
@@ -19,12 +21,12 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private location: Location,
-    private router: Router,
     private cardService: CardService,
-    ) { }
+    private  printService: PrintService
+  ) { }
 
   ngOnInit() {
-    this.cardService.$cards.subscribe( cards => this.cardsLength = cards.length);
+    this.cardService.$cards.subscribe(cards => this.cardsLength = cards.length);
   }
 
   onSearchChange(ev) {
@@ -37,7 +39,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onPrint() {
-    this.router.navigate(['/print-cards']);
+   this.printService.printCards();
   }
 
 }

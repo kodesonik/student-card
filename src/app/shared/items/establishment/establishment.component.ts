@@ -32,7 +32,7 @@ export class EstablishmentComponent implements OnInit {
    }
 
    displayYears() {
-     this.router.navigate(['school-years', this.data.id]);
+     this.router.navigate(['app/school-years', this.data.id]);
    }
 
   async onEdit() {

@@ -1,3 +1,7 @@
+import { SharedModule } from 'src/app/shared/shared.module';
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { PrintLayoutComponent } from './layouts/print-layout/print-layout.component';
+import { MenuLayoutComponent } from './layouts/menu-layout/menu-layout.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -11,11 +15,13 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideStorage, getStorage } from '@angular/fire/storage';
+import { WebLayoutComponent } from './layouts/web-layout/web-layout.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, WebLayoutComponent, AuthLayoutComponent, MenuLayoutComponent, PrintLayoutComponent],
   imports: [
     BrowserModule,
+    SharedModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', {

@@ -108,7 +108,7 @@ export class SeedService {
       tableRow.classroom = classroom;
       let rowObject = utils.sheet_to_json(workbook.Sheets[sheet]);
       // console.log(rowObject);
-      console.log(rowObject[0][this._params.id]);
+      // console.log(rowObject[0][this._params.id]);
       if (!rowObject[0][this._params.id]) {
         const header: any = rowObject[0];
         // const header = Object.keys(secondRow).map(key => key);

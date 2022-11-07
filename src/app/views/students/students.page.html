@@ -3,7 +3,7 @@
 </app-header>
 <ion-content>
   <div class="w-full h-full flex justify-center">
-    <div class="w-full max-w-xl h-full p-4">
+    <div class="w-full max-w-4xl h-full p-4">
       <div class="mt-5 grid grid-cols-1" *ngIf="students.length > 0; else noData">
         <div class="w-full flex justify-between items-center border-b border-gray-400 shadow-sm p-2 rounded">
 
@@ -21,7 +21,7 @@
           <span>Actions</span>
           </div>
         </div>
-        <app-student *ngFor="let student of students | order: ['firstName','lastName'] | filterByName: searchValue" [data]="student" (display)="onDisplayInfos(student.id)" (edit)="onEdit(student.id)" (delete)="onDelete(student.id)" (checked)="onCheck($event, student)"></app-student>
+        <app-student *ngFor="let student of students | order: ['firstName','lastName'] | filterByName: searchValue; let i = index" [data]="student" [index]="i" (display)="onDisplayInfos(student.id)" (edit)="onEdit(student.id)" (delete)="onDelete(student.id)" (checked)="onCheck($event, student)"></app-student>
       </div>
       <ng-template #noData>
         <div class="h-full w-full flex justify-center items-center">

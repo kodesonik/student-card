@@ -41,6 +41,19 @@ export class StudentsPage implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    // this.students = [];
+    // // this.classRoomService.clearData();
+    // this.dataSub = this.studentService.$data.subscribe(res => {
+    //   console.log(res.length);
+    //   res.forEach(item => {
+    //     const i = this.students.findIndex(student => student.id === item.id);
+    //     console.log(i);
+    //     if (i === -1) this.students.push(item);
+    //     else this.students[i] = item;
+    //   });
+    //   this.students.filter(student => res.find(item => item.id === student.id));
+    //   console.log(this.students);
+    // });
     // this.classRoomService.clearData();
     this.dataSub = this.studentService.$data.subscribe(res => this.students = res);
     // this.route

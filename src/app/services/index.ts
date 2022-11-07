@@ -1,3 +1,4 @@
+import { PrintService } from './print.service';
 import { SeedService } from './seed.service';
 import { AlertService } from './alert.service';
 import { UploadService } from './upload.service';
@@ -21,5 +22,6 @@ export {
     UploadService,
     AlertService,
     NetworkService,
-    SeedService
+    SeedService,
+    PrintService
 };
