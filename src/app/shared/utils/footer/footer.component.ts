@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-shadow */
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { doc, Firestore, updateDoc } from '@angular/fire/firestore';
 import { Filesystem, Directory } from '@capacitor/filesystem';
 import { AlertController } from '@ionic/angular';
@@ -9,7 +9,7 @@ import { NetworkService, UploadService } from 'src/app/services';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss'],
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent implements OnInit, AfterViewInit {
   progress = 0;
   // isSync = false;
   isOnline = false;
@@ -21,12 +21,17 @@ export class FooterComponent implements OnInit {
     private alertController: AlertController
   ) { }
 
+
   ngOnInit() {
-    this.networkService.$networkStatus.subscribe( res => this.isOnline = (res.connected && res.connectionType === 'wifi')?true:false);
-    this.uploadService.$offlineDataCount.subscribe( res => this.imagesLength = res);
-    this.networkService.logCurrentNetworkStatus().then( res => this.isOnline = res.connected ?true:false);
+    // window.setTimeout(() =>{
+    // }, 2000);
   }
 
+  ngAfterViewInit(): void {
+    this.networkService.logCurrentNetworkStatus().then( res => this.isOnline = res.connected ?true:false);
+    this.uploadService.$offlineDataCount.subscribe( res => this.imagesLength = res);
+    this.networkService.$networkStatus.subscribe( res => this.isOnline = (res.connected && res.connectionType === 'wifi')?true:false);
+  }
 
   async presentAlertConfirm() {
     const alert = await this.alertController.create({

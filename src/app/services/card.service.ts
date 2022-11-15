@@ -1,3 +1,5 @@
+import { LynadaComponent } from './../shared/cards/lynada/lynada.component';
+import { DefaultComponent } from './../shared/cards/default/default.component';
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 import { BehaviorSubject } from 'rxjs';
 /* eslint-disable @typescript-eslint/member-ordering */
@@ -11,16 +13,35 @@ import { Card } from '../models';
 export class CardService {
   private _cards: Card[] = [];
   private _$cards = new BehaviorSubject<Card[]>([]);
+  private _themes = [
+    {
+      name: 'default',
+      component: DefaultComponent
+    },
+    {
+      name: 'lynada',
+      component: LynadaComponent
+    },
+  ];
+
 
   constructor() { }
 
   addCard(card: Card) {
-    this._cards.find(c => c.id === card.id)?null:this._cards.push(card);
+    this._cards.find(c => c.id === card.id) ? null : this._cards.push(card);
     this._$cards.next(this._cards);
   }
 
-  removeCard(id: string)  {
-    this._cards = this._cards.filter(c => c.id!== id);
+  get themes() {
+    return this._themes;
+  }
+
+  getThemeComponent(name = 'default') {
+    return this._themes.find(theme => theme.name === name)?.component;
+  }
+
+  removeCard(id: string) {
+    this._cards = this._cards.filter(c => c.id !== id);
     this._$cards.next(this._cards);
   }
 

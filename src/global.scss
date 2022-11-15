@@ -54,6 +54,18 @@
   }
 }
 
+ion-slide {
+  display: block;
+  height: 100%;
+}
+
+.swiper-slide {
+  width: 100vw;
+ img {
+      height: inherit !important;
+      width: inherit !important;
+ }
+}
 
 
 // .break-after {

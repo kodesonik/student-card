@@ -68,9 +68,14 @@
             <label for="birth-place" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Lieu de naissance</label>
             <input type="text" id="birth-place"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              name="birthPlace" [(ngModel)]="data.birthPlace" placeholder="Dapaong, Togo" required>
+              name="birthPlace" [(ngModel)]="data.birthPlace" placeholder="Dapaong" required>
           </div>
-
+          <div>
+            <label for="birth-country" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Lieu de naissance</label>
+            <input type="text" id="birth-country"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              name="birthCountry" [(ngModel)]="data.birthCountry" placeholder="Togo" required>
+          </div>
         </div>
        
         <button (click)="onValidate()"

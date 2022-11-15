@@ -1,0 +1,93 @@
+<div class="bg-emblem w-full h-[73mm] py-1 border-x-8 border-blue-800 poppins">
+  <!-- header -->
+  <div class="w-full h-full cover">
+
+    <div class="w-full flex gap-2 border-t-8 border-blue-800  p-1 ">
+      <div class="text-center w-1/4">
+        <h3 class="text-center text-[0.4rem] font-semibold">REPUBLIQUE TOGOLAISE</h3>
+        <img src="./assets/img/emblem.png" class="w-8 mx-auto" alt="">
+        <h3 class="text-center text-red-500 text-[0.4rem] font-semibold">TRAVAIL-LIBERTE-PATRIE</h3>
+      </div>
+
+      <div class="text-center w-1/2">
+        <h4 class="text-red-500 text-xs font-bold">CARTE D'IDENTITE SCOLAIRE</h4>
+        <h2 class=" text-blue-800 text-[0.8rem] font-bold uppercase">{{ data.establishmentName }}</h2>
+        <h5 class="text-blue-700 text-[0.6rem] text-center font-bold">CEL: {{ data.establishmentContact }}</h5>
+        <h5 class="text-black text-xs uppercase text-center font-bold ">Année scolaire <span class="text-red-500">{{
+            data.schoolYear }}</span> </h5>
+      </div>
+
+      <div class=" w-1/4 flex justify-end items-center gap-1">
+        <img [src]="data.logo || './assets/img/logo.png'" class="w-16 mx-auto" alt="">
+      </div>
+    </div>
+
+    <!-- body -->
+    <div class="w-full  border-y-4 border-blue-800 relative">
+      <img src="assets/img/cachet.png" class="w-12 absolute bottom-6 right-20"  alt="">
+
+      <div class="w-full flex jus">
+        <div class="w-3/4 px-4 pt-1">
+          <div class="font-semibold text-black text-[0.6rem] leading-[1.20rem] w-full flex justify-between">Nom: <div
+              class="w-2/3 font-bold text-black uppercase">{{ data.firstName
+              }}</div>
+          </div>
+          <div class="font-semibold text-black text-[0.6rem] leading-[1.20rem] w-full flex justify-between">Prénom(s): <div
+              class="w-2/3 font-bold text-black">{{ data.lastName
+              }}</div>
+          </div>
+          <div class="font-semibold text-black text-[0.6rem] leading-[1.20rem] w-full flex justify-between">Sexe: <div
+              class="w-2/3 font-bold text-black">{{ data.sex }}</div>
+          </div>
+          <div class="font-semibold text-black text-[0.6rem] leading-[1.20rem] w-full flex justify-between"><h3>Né<span *ngIf="data.sex === SEX.F" >e</span> le: </h3><div
+              class="w-2/3 font-bold text-black">{{
+              data.birthDate | date:
+              'dd/MM/yyyy' }}</div>
+          </div>
+          <div class="font-semibold text-black text-[0.6rem] leading-[1.20rem] w-full flex justify-between">Lieu: <div
+              class="w-2/3 font-bold text-black">{{ data.birthPlace }}  <span *ngIf="data.birthCountry" class="capitalize">({{ data.birthCountry }})</span></div>
+          </div>
+          <div class="font-semibold text-black text-[0.6rem] leading-[1.20rem] w-full flex justify-between">Classe: <div
+              class="w-2/3 font-bold text-black capitalize">{{
+              data.level }} {{ data.serie }}{{ data.classNum }}</div>
+          </div>
+
+          <!-- <div class="capitalize text-black text-[0.6rem] leading-[1.20rem] w-full flex justify-between">N MATRICULE: <div class="w-2/3 text-black">{{ data.id
+            }}</div></div> -->
+          <div class="text-[0.5rem] leading-[0.6rem]" >Contact à prévenir en cas d'accident: <span class="w-2/3 text-black font-bold">{{ data.contact
+              }}</span>
+          </div>
+          <div>
+            <p class="text-[0.58rem] mt-1 leading-[1rem] text-black font-bold">Je soussigné<span *ngIf="data.managerSex==='Mme'" >e</span> <span class="text-blue-900" > {{ data.managerSex }} {{ data.managerName }} </span>, Proviseur du 
+              <span class="text-red-500"> {{
+              data.establishmentName }} </span>, certifie que
+              <span *ngIf="data.sex === SEX.M">le</span> <span *ngIf="data.sex === SEX.F" >la</span> titulaire de cette carte est élève dans mon établissement. </p>
+          </div>
+        </div>
+        <div class="w-1/4">
+          <div class="w-full flex justify-center p-1">
+            <img *ngIf="!data.avatar;else avatar" src="assets/img/avatar.png" class="w-full" alt="">
+            <ng-template #avatar>
+              <app-cache-img [src]="data.avatar" [cssClasses]="'w-full '"></app-cache-img>
+            </ng-template>
+          </div>
+          <div class="pt-1">
+            <h3 class="text-black font-bold text-center text-[10px]">Le Directeur</h3>
+            <app-cache-img *ngIf="data.signature; else blankSignature" [src]="data.signature"
+              [cssClasses]="'h-6 my-2 mx-auto'"></app-cache-img>
+            <ng-template #blankSignature>
+              <div class="w-full h-6 my-2"></div>
+            </ng-template>
+            <h3 class="text-black font-bold text-center text-[10px]">
+              <span *ngIf="data.managerSex === SEX.M; else sexF">M.</span>
+              <ng-template #sexF><span>Mme </span></ng-template>
+              {{ data.managerName }}
+            </h3>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,7 +1,7 @@
 import { Url } from 'url';
 export default interface Establishment  {
     id?: string;
-    logo: string | Url;
+    logo: string;
     name: string;
     poBOX: string;
     phoneNumber: string;
@@ -9,4 +9,5 @@ export default interface Establishment  {
     address: string;
     inspection: string;
     createdAt?;
+    cardTheme: string;
 }

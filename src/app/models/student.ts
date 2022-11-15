@@ -8,6 +8,7 @@ export default interface Student {
     sex: Sex;
     birthDate: string;
     birthPlace: string;
+    birthCountry?: string;
     phoneNumber: string;
     nationality: string;
     classRoomId: string;

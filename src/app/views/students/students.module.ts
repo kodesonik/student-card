@@ -1,3 +1,4 @@
+import { OrderPipe } from './../../pipes/order.pipe';
 import { PipesModule } from './../../pipes/pipes.module';
 import { SharedModule } from './../../shared/shared.module';
 import { NgModule } from '@angular/core';
@@ -19,6 +20,7 @@ import { StudentsPage } from './students.page';
     PipesModule,
     StudentsPageRoutingModule
   ],
+  providers: [OrderPipe],
   declarations: [StudentsPage]
 })
 export class StudentsPageModule {}

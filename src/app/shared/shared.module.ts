@@ -1,3 +1,5 @@
+import { LynadaComponent } from './cards/lynada/lynada.component';
+import { DefaultComponent } from './cards/default/default.component';
 import { CacheImgComponent } from './utils/cache-img/cache-img.component';
 import { SchoolYearFormComponent } from './forms/school-year-form/school-year-form.component';
 import { CropImageComponent } from './utils/crop-image/crop-image.component';
@@ -57,8 +59,13 @@ const utils = [
   CacheImgComponent
 ];
 
+const cards = [
+  DefaultComponent,
+  LynadaComponent
+];
+
 @NgModule({
-  declarations: [...forms, ...details, ...list, ...items, ...utils],
+  declarations: [...forms, ...details, ...list, ...items, ...utils, ...cards],
   imports: [
     CommonModule,
     FormsModule,
@@ -67,6 +74,6 @@ const utils = [
     AngularSignaturePadModule,
     NgxPrintModule
   ],
-  exports: [...forms, ...details, ...list, ...items, ...utils]
+  exports: [...forms, ...details, ...list, ...items, ...utils, ...cards]
 })
 export class SharedModule { }

@@ -69,6 +69,12 @@ export class SchoolYearService {
     });
   }
 
+  async updateAllStudents(id) {
+    const collectionReference  = collection(this.firestore, 'establishments', this._establishmentId, this.collectionName, id, 'students');
+    const res =  await getDocs(collectionReference);
+    console.log(res.size);
+    res.forEach(async doc =>  await updateDoc(doc.ref, { birthCountry: 'Togo' }));
+  }
 
   getByParam(param: string, value: any) {
     return this._data.value.find(est => est[param] === value);
@@ -99,4 +105,6 @@ export class SchoolYearService {
       this._data.next(schoolYears);
     });
   }
+
+
 }

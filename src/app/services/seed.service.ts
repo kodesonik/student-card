@@ -169,6 +169,7 @@ export class SeedService {
       avatar: null,
       birthDate: null,
       birthPlace: null,
+      birthCountry: 'Togo',
       phoneNumber: null,
       nationality: 'Togolaise'
     };

@@ -26,11 +26,12 @@ export class StudentFormComponent implements OnInit {
     avatar: null,
     firstName: '',
     lastName: '',
-    nationality: '',
+    nationality: 'Togolaise',
     phoneNumber: '',
     sex: null,
     birthDate: '',
     birthPlace: '',
+    birthCountry: 'Togo'
   };
 
   SEX = Sex;

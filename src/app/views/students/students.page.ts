@@ -12,6 +12,7 @@ import { CardService, ClassRoomService, EstablishmentService, SchoolYearService,
 import { StudentFormComponent } from 'src/app/shared/forms/student-form/student-form.component';
 import { StudentsComponent } from 'src/app/shared/list/students/students.component';
 import { StudentInfosComponent } from 'src/app/shared/details/student-infos/student-infos.component';
+import { OrderPipe } from 'src/app/pipes/order.pipe';
 
 @Component({
   selector: 'app-students',
@@ -37,7 +38,8 @@ export class StudentsPage implements OnInit, OnDestroy {
     private schoolYearService: SchoolYearService,
     private establishmentService: EstablishmentService,
     private cardService: CardService,
-    private seedService: SeedService
+    private seedService: SeedService,
+    private orderPipe: OrderPipe,
   ) { }
 
   ngOnInit() {
@@ -79,23 +81,30 @@ export class StudentsPage implements OnInit, OnDestroy {
       });
       return;
     }
-    this.students.map(student => {
+    const data = this.orderPipe.transform(this.students, ['firstName', 'lastName']);
+    data.map(student => {
       student.isChecked = true;
       const studentCard = {
+        logo: this.establishment.logo,
         id: student.id,
         avatar: student.avatar,
         firstName: student.firstName,
         lastName: student.lastName,
         sex: student.sex,
         birthDate: student.birthDate,
+        birthPlace: student.birthPlace,
+        birthCountry: student.birthCountry,
         contact: student.phoneNumber,
         schoolYear: this.schoolYear.start + ' ' + this.schoolYear.end,
         establishmentName: this.establishment.name,
+        establishmentContact: this.establishment.phoneNumber,
         level: this.classRoom.level,
         serie: this.classRoom.serie,
+        classNum: this.classRoom.num,
         managerSex: this.schoolYear.managerSex,
         managerName: this.schoolYear.managerName,
-        signature: this.schoolYear.signature
+        signature: this.schoolYear.signature,
+        theme: this.establishment.cardTheme,
       };
       this.cardService.addCard(studentCard);
       return student;
@@ -163,19 +172,25 @@ export class StudentsPage implements OnInit, OnDestroy {
     if (!ev) return this.cardService.removeCard(student.id);
     const studentCard = {
       id: student.id,
+      logo: this.establishment.logo,
       avatar: student.avatar,
       firstName: student.firstName,
       lastName: student.lastName,
       sex: student.sex,
       birthDate: student.birthDate,
+      birthPlace: student.birthPlace,
+      birthCountry: student.birthCountry,
       contact: student.phoneNumber,
       schoolYear: this.schoolYear.start + ' ' + this.schoolYear.end,
       establishmentName: this.establishment.name,
+      establishmentContact: this.establishment.phoneNumber,
       level: this.classRoom.level,
       serie: this.classRoom.serie,
+      classNum: this.classRoom.num,
       managerSex: this.schoolYear.managerSex,
       managerName: this.schoolYear.managerName,
-      signature: this.schoolYear.signature
+      signature: this.schoolYear.signature,
+      theme: this.establishment.cardTheme
     };
     this.cardService.addCard(studentCard);
   }

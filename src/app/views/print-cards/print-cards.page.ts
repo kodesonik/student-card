@@ -2,7 +2,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs/operators';
 import { Card } from 'src/app/models';
-import { CardService, PrintService } from 'src/app/services';
+import { CardService, EstablishmentService, PrintService } from 'src/app/services';
 
 @Component({
   selector: 'app-print-cards',
@@ -16,15 +16,15 @@ export class PrintCardsPage implements OnInit {
   constructor(
     private location: Location,
     private cardService: CardService,
-    private printService: PrintService
+    private printService: PrintService,
   ) { }
 
   ngOnInit() {
-    console.log('printing cards');
+    // console.log('printing cards');
     this.cardService.$cards.pipe(take(1)).toPromise().then(res => {
       this.cardsPages = [];
       for(let i = 0; i < res.length; i+=8){
-          this.cardsPages.push(res.slice(i, i+8));
+        this.cardsPages.push(res.slice(i, i+8));
       }
       console.log(this.cardsPages);
       this.printService.onDataReady();
